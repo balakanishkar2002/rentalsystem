@@ -66,12 +66,32 @@ AppAsset::register($this);
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/property-details/index'])?>">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Property Details</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/property-floor/index'])?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Property Floors</span></a>
+        </li>
+        <li class="nav-item">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/house-details/index'])?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>House Details</span></a>
+        </li>
+        <li class="nav-item">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/tenant-details/index'])?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tenant Details</span></a>
+        </li>
+        <li class="nav-item">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/rental-details/index'])?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Rental Details</span></a>
+        </li>
+        <li class="nav-item">
+            <a data-method="post" class="nav-link" href="<?php echo \yii\helpers\Url::to(['/country/index'])?>">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Country</span></a>
         </li>
@@ -300,7 +320,10 @@ AppAsset::register($this);
 
             <!-- Begin Page Content -->
              <!-- /.container-fluid -->
+            <div class="p-4">
                 <?php echo $content ?>
+            </div>
+
         </div>
         <!-- End of Main Content -->
 

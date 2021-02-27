@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -28,11 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'country_id',
             'country_name',
-            'Status',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'attribute' => 'Status',
+                'content' => function($model) {
+                    return Html::tag('span', $model->Status ? 'Active' : 'Draft', [
+                        'class' => $model->Status ? 'badge badge-success' : 'badge badge-danger'
+                    ]);
+                }
+            ],
+            ['class' => 'common\grid\ActionColumn'],
         ],
     ]); ?>
+    </div>
 
 
 </div>

@@ -19,26 +19,35 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
 
-            //'property_id',
+             //'property_id',
             'property_name',
             'property_street1',
-            'property_street2',
             'property_city',
-            //'property_state',
+            'property_state',
             'country.country_name',
-            //'Status',
-            //'Permission',
+            [
+                'attribute' => 'Status',
+                'content' => function($model) {
+                    return Html::tag('span', $model->Status ? 'Active' : 'Draft', [
+                        'class' => $model->Status ? 'badge badge-success' : 'badge badge-danger'
+                    ]);
+                }
+            ],
+            //'Ownername',
+            //'Property_details:ntext',
+            //'created_date',
+            //'updated_date',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'common\grid\ActionColumn'],
         ],
     ]); ?>
-
+    </div>
 
 </div>

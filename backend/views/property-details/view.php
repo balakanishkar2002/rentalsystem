@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Propertydetails */
+/* @var $model backend\models\propertydetails */
 
 $this->title = $model->property_id;
 $this->params['breadcrumbs'][] = ['label' => 'Propertydetails', 'url' => ['index']];
@@ -32,12 +32,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'property_id',
             'property_name',
             'property_street1',
-            'property_street2',
             'property_city',
             'property_state',
             'country_id',
-            'Status',
-            'Permission',
+           // 'Status',
+            [
+                'attribute' => 'Status',
+                'format' => 'html',
+                'value' => fn()=> Html::tag('span', $model->Status ? 'Active' : 'Draft', [
+                    'class' => $model->Status ? 'badge badge-success' : 'badge badge-danger'
+                ]),
+            ],
+            'Ownername',
+            'Property_details:html',
+            'created_date',
+            'updated_date',
         ],
     ]) ?>
 

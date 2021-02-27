@@ -31,7 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'country_id',
             'country_name',
-            'Status',
+            [
+                'attribute' => 'Status',
+                'format' => 'html',
+                'value' => fn()=> Html::tag('span', $model->Status ? 'Active' : 'Draft', [
+                    'class' => $model->Status ? 'badge badge-success' : 'badge badge-danger'
+                ]),
+            ],
         ],
     ]) ?>
 

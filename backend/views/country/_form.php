@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Country */
@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'country_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'Status')->dropDownList(['1'=>'Active','0'=>'Not-Active']) ?>
+    <?= $form->field($model, 'Status')->dropDownList([1=>'Active',0=>'Not-Active']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

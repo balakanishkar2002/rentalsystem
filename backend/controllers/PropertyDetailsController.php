@@ -4,11 +4,11 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\propertydetails;
-use backend\models\propertydetailsSearch;
+use backend\models\PropertydetailsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * PropertyDetailsController implements the CRUD actions for propertydetails model.
  */
@@ -20,8 +20,18 @@ class PropertyDetailsController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::class,
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'update', 'create', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -29,13 +39,14 @@ class PropertyDetailsController extends Controller
         ];
     }
 
+
     /**
      * Lists all propertydetails models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new propertydetailsSearch();
+        $searchModel = new PropertydetailsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -65,9 +76,11 @@ class PropertyDetailsController extends Controller
     public function actionCreate()
     {
         $model = new propertydetails();
-
+        $model->created_date = date('Y-m-d h:i:s');
+        $model->updated_date = date('Y-m-d h:i:s');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->property_id]);
+            //return $this->redirect(['view', 'id' => $model->property_id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -85,9 +98,10 @@ class PropertyDetailsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->updated_date = date('Y-m-d h:i:s');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->property_id]);
+           // return $this->redirect(['view', 'id' => $model->property_id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

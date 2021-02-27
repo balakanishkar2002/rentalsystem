@@ -21,17 +21,21 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'property_street1') ?>
 
-    <?= $form->field($model, 'property_street2') ?>
-
     <?= $form->field($model, 'property_city') ?>
 
-    <?php // echo $form->field($model, 'property_state') ?>
+    <?= $form->field($model, 'property_state') ?>
 
     <?php // echo $form->field($model, 'country_id') ?>
 
     <?php // echo $form->field($model, 'Status') ?>
 
-    <?php // echo $form->field($model, 'Permission') ?>
+    <?php // echo $form->field($model, 'Ownername') ?>
+
+    <?php // echo $form->field($model, 'Property_details') ?>
+
+    <?php // echo $form->field($model, 'created_date') ?>
+
+    <?php // echo $form->field($model, 'updated_date') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Propertydetails */
+/* @var $model backend\models\propertydetails */
 
 $this->title = 'Create Propertydetails';
 $this->params['breadcrumbs'][] = ['label' => 'Propertydetails', 'url' => ['index']];

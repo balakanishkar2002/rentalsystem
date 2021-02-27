@@ -4,12 +4,12 @@ namespace backend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Propertydetails;
+use backend\models\propertydetails;
 
 /**
- * PropertydetailsSearch represents the model behind the search form of `backend\models\Propertydetails`.
+ * PropertydetailsSearch represents the model behind the search form of `backend\models\propertydetails`.
  */
-class PropertydetailsSearch extends Propertydetails
+class PropertydetailsSearch extends propertydetails
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class PropertydetailsSearch extends Propertydetails
     {
         return [
             [['property_id', 'country_id', 'Status'], 'integer'],
-            [['property_name', 'property_street1', 'property_street2', 'property_city', 'property_state', 'Permission'], 'safe'],
+            [['property_name', 'property_street1', 'property_city', 'property_state', 'Ownername', 'Property_details', 'created_date', 'updated_date'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PropertydetailsSearch extends Propertydetails
      */
     public function search($params)
     {
-        $query = Propertydetails::find();
+        $query = propertydetails::find();
 
         // add conditions that should always apply here
 
@@ -61,14 +61,16 @@ class PropertydetailsSearch extends Propertydetails
             'property_id' => $this->property_id,
             'country_id' => $this->country_id,
             'Status' => $this->Status,
+            'created_date' => $this->created_date,
+            'updated_date' => $this->updated_date,
         ]);
 
         $query->andFilterWhere(['like', 'property_name', $this->property_name])
             ->andFilterWhere(['like', 'property_street1', $this->property_street1])
-            ->andFilterWhere(['like', 'property_street2', $this->property_street2])
             ->andFilterWhere(['like', 'property_city', $this->property_city])
             ->andFilterWhere(['like', 'property_state', $this->property_state])
-            ->andFilterWhere(['like', 'Permission', $this->Permission]);
+            ->andFilterWhere(['like', 'Ownername', $this->Ownername])
+            ->andFilterWhere(['like', 'Property_details', $this->Property_details]);
 
         return $dataProvider;
     }

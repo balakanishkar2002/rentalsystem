@@ -28,7 +28,7 @@ return [
             'name' => 'advanced-backend',
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => YII_DEBUG ? 3 : 1,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -46,7 +46,13 @@ return [
             'rules' => [
             ],
         ],
-
+        'response' => [
+            'formatters' => [
+                'pdf' => [
+                    'class' => 'robregonm\pdf\PdfResponseFormatter',
+                ],
+            ]
+        ],
     ],
     'params' => $params,
 ];
